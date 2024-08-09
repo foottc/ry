@@ -1,0 +1,21 @@
+name: Rainyun
+on:
+  workflow_dispatch:
+  schedule:
+  # 定时任务
+    - cron: '0 20 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
+        with:
+           python-version: 3.7
+
+      - name: 'Do task'
+        run: 
+          python ./rainyun.py
